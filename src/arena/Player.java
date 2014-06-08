@@ -27,6 +27,7 @@ public class Player extends DynamicObject {
     public final int PLAYER_RIGHT = 0;
     public final int PLAYER_LEFT = 1;
     boolean slowingDown = false;
+    private int THISintisathing= 2341234;
     Vector2 acceleration;
     Vector2 velocity;
     TextureRegion currentSprite;
