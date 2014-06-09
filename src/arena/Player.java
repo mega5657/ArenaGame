@@ -41,6 +41,12 @@ public class Player extends DynamicObject {
     Animation marioJump;
     Animation marioFall;
     Animation marioDuckus;
+    Animation marioLeftRun;
+    Animation marioLeftIdle;
+    Animation currentLeftAnim;
+    Animation marioLeftJump;
+    Animation marioLeftFall;
+    Animation marioLeftDuckus;
     float stateTime;
     int CURRENT_MOVE_SPEED = 6;
     boolean freeMove = true;
@@ -67,12 +73,30 @@ public class Player extends DynamicObject {
         determineState();
         currentSprite = currentAnim.getKeyFrame(stateTime, 0);
         stateTime += deltaTime;
-        if (stateTime > 10)
-        {stateTime = 0;}
+        if (stateTime > 10) {
+            stateTime = 0;
+        }
 
     }
 
     private void determineState() {
+
+        if (velocity.x != 0) {
+            if (velocity.x < 0) {
+                direction = PLAYER_LEFT;
+            } // end player left
+
+            if (velocity.x > 0) {
+                direction = PLAYER_RIGHT;
+            } // end player right
+
+            if (direction == PLAYER_LEFT) {
+                
+            }
+            if (direction == PLAYER_RIGHT) {
+            }
+        } //end first boolean
+
 
         if (velocity.y == 0) {
             if (velocity.x == 0) {
@@ -80,8 +104,12 @@ public class Player extends DynamicObject {
                 state = PLAYER_IDLE;
             }
             if (velocity.x != 0) {
-                currentAnim = marioRun;
                 state = PLAYER_RUNNING;
+
+                if (velocity.x > 0) {
+                    currentAnim = marioRun;
+                }
+
             }
         }
 
